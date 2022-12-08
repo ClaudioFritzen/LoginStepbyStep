@@ -32,11 +32,35 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # allauth 
-    #'django.contrib.sites',
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    # login com google
+    'allauth.socialaccount.providers.google',
 ]
+SITE_ID = 1
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'auth0': {
+        'AUTH0_URL': 'https://your.auth0domain.auth0.com',
+        'OAUTH_PKCE_ENABLED': True,
+    }
+}
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': os.getenv('client_id'),
+            'secret': os.getenv('secret'),
+            'key': ''
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

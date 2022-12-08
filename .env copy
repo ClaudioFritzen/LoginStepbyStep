@@ -1,2 +1,7 @@
 SECRET_KEY = ''
 DEBUG = True
+
+
+# para logi com o google
+client_id=''
+secret=''
